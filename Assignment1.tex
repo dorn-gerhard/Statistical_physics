@@ -1,0 +1,165 @@
+\documentclass[12pt,a4paper]{article} %scrbook}%bookof}
+
+
+
+% makes nice font
+
+
+%fills A4 page
+\usepackage{a4wide}
+\usepackage[inner=2cm,outer=2cm, bottom = 2.0cm]{geometry}   %nice setting for twoside binding
+
+
+
+%\usepackage[utf8]{inputenc}   % damit man Umlaute direkt eingeben kann und diese erkannt werden.
+\usepackage[T1]{fontenc}        % Umlaute werden als eine Einheit angesehen -> richtige Trennung;
+                                % ausserdem: die T1-Fonts gibt es auch in
+                                % größeren Größen
+%\usepackage{ae,aecompl}
+\usepackage{units}
+\usepackage[english]{babel}      %hiermit erhält man z.B. 'Abb.' statt 'Fig.' bei Bildbeschriftungen
+\usepackage[utf8]{inputenc}
+%\makeglossary                   % zwischendurch makeindex disseration aufrufen
+\usepackage{enumerate}
+\usepackage{latexsym}
+
+
+%\clearscrplain
+%\clearscrheadings
+
+\usepackage[headsepline]{scrlayer-scrpage}
+%\usepackage[]{scrpage2}
+%\clearplainofpairofpagestyles
+%\clearscrheadings
+\pagestyle{scrheadings}
+
+\cofoot[\pagemark]{\pagemark}% optionales Argument --> plain
+%\clearscrheadings
+\rohead{NAWI Graz}
+\chead{
+ Exercise Statistical Physics \\{\small Contact: gerhard.dorn@tugraz.at}}
+\lohead{ITP}
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+
+
+\usepackage{amsmath,amsthm,amsfonts}
+%\usepackage{showkeys}
+%\usepackage{epsfig}
+%\usepackage{epic}
+\usepackage{xr}
+
+\usepackage{graphicx}
+%\usepackage{inmthesis}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage[sorting=none, hyperref=true, backref=true]{biblatex}
+\addbibresource{./library.bib}
+%boxes
+\usepackage{mdframed}
+\usepackage{tensor}
+%unity operator
+%\usepackage{bbold}
+
+\begin{document}
+
+ %\begin{center}
+ %Technische Universität Graz \\
+ %Institut für Theoretische Physik - computational physics \\
+ %Prof. Dr. Wolfgang von der Linden \\
+ %Kontakt: gerhard.dorn@tugraz.at
+ %\end{center}
+ 
+ 
+ \vspace{1cm}
+ \paragraph{Introduction:} Counting states which might have a special property (like same energy, number of particles, etc.) is one of the key abilities in statistical physics which are the foundation to express partition sum and derive thermodynamical quantities from microscopic properties. 
+ As warm up we look at two counting problems which we will come across in some future exercise classes.
+ 
+ In the third problem we will discuss the concept of equilibration and description via probability distributions.
+ 
+ 
+ \section{Counting problem: Valid sequence of brackets}
+ Consider bracket sequences $a(k,j)$ of $k$ open and $j$ closed brackets.\\
+ E.g. $a(3,2)= \texttt{()(()}, \,\,\texttt{)(()(},\,\, \texttt{((())}, \,\, \dots $
+ \begin{itemize}
+  \item How many different bracket sequences $\left| a(k,j)\right|$ are there?
+ \end{itemize}
+ We call a bracket sequence \textbf{valid} if -- when reading from left to right -- there are always more (or equal) open brackets than closed brackets. A sequence like ``$\texttt{(()())\textcolor{red}{)}(}$'' $ $ is not valid. We call such a sequence \textbf{closed} if the sequence is valid and has the same number of open and closed brackets.
+ \begin{itemize}
+  \item Find out the number $C_n$\footnote{This so-called Catalan numbers are present in many combinatorial counting problems. Check Wikipedia or~\cite{mccammond2006noncrossing} to get an impression of some applications. Online search via {\tt scholar.google.com}} of closed sequences with $n$ open and $n$ closed brackets.
+ \end{itemize}
+ \begin{itemize}
+  \item Find out the number of valid sequences with $n+m$ open brackets and $n-m$ closed brackets\footnote{These are the so-called Lobb numbers $L_{m,n}$.}.\\
+  Hint: Use a  similar trick (reflection method) as in Bertrand's ballot theorem.
+ \end{itemize}
+
+
+
+ \section{Counting problem: Telephone numbers}
+ Given are ordinary phone numbers with $N$ digits. Imagine you have a very old disc telephone. When dialing a number it costs you a different amount of time $t_d)$ depending (not linearly) on the digit $d \in \{0, \dots, 9\}$ you are dialing (e.g. it takes the longest to dial a nine).
+ \begin{itemize}
+ \item \textbf{Binary warmup:} What is the number of binary telephone numbers  ($d \in \{0,1\}$), that have $N$ digits and need a total time of $T$ when dialing them on the binary disc phone. The total time is given by:
+ \begin{align}T = \sum_{j=1}^{N} t_{d_j}, \qquad \begin{cases} d_j \in \{0,1\} & \textnormal{ binary case} \\d_j \in \{0, \dots, 9\} & \textnormal{ decimal case} \end{cases}
+\end{align}
+                                                  
+
+  \item  How could you count the number of telephone numbers $Z(N,T)$ that have $N$ digits and need a total time of $T$ when dialing them on the decimal disc phone.\\
+  Hint: Think how to characterize those numbers which have the same total dial time $T$.
+ \end{itemize}
+
+
+ 
+
+ 
+
+ \section{The dog-flea problem according to Ehrenfest}
+ The two dogs Arko and Bello meet along the Mur promenade.  Arko has $N$ fleas, Bello has none before the meeting. The $N$ (even natural number, e.g. $N = 50$) fleas represent distinguishable, classical particles! (s. chapter 6.1 in the lecture notes). Each second ($\Delta t = 1$s) one of the $N$ fleas is selected randomly (uniformly flat probability distribution) and hops onto the other dog. 
+ 
+ The aim of this task is to describe and analyse this process by statistical means.
+ \begin{itemize}
+ \item What will happen after very long time (after equilibration). How does the probability distribution in equilibrium look like and what is the probability to find 20 of 50 fleas on Bello?
+ \item Starting in an equilibrium state. How long does it take on average to gain the initial state (all fleas on Arko)?
+ \item Consider at which time the probability to have equal fleas on both dogs becomes bigger than zero.
+ \end{itemize}
+  How long does it take on average until there are equal amount of fleas on both dogs for the first time (equilibration time).
+  \begin{itemize}
+   \item[+)] \textbf{Simulation} Consider a dog flea simulation on the computer to get an answer this question. Make a written sketch how to compute the probability distribution over time \\
+   $p(N=25$ for the first time $| t)$ via simulation. Random walk? Markov process? 
+  \item[+)] \textbf{Analysis} Answer this question analytically: Have a look at the derivation ``Average time till equilibrium'' in the appendix A.2, try to comprehend the derivation steps, summarize them and use the result to calculate expectation time to have an equal number of fleas for the first time.
+   \end{itemize}
+  There where several publications on this topic e.g.~\cite{ambegaokar1999entropy}
+
+\printbibliography
+  
+
+
+\vspace{2cm}
+\begin{minipage}[t]{1\textwidth}
+	\raggedleft
+	\centering
+\includegraphics[width = 0.20\textwidth]{CC-BY_icon}
+\vspace{0.2cm}
+
+\centering
+{\Large Gerhard Dorn} \\
+https://creativecommons.org/licenses/by/4.0/legalcode
+\end{minipage}
+
+
+
+  \end{document}
+  
+  
+  
+\section{Volume of a $d$-dimensional sphere}
+\begin{itemize}
+\item[a)] Calculate the volume $V_d(R)$ of a $d$-dimensional sphere with radius $R$. 
+To do that write down the $d$-dimensional spherical coordinates and express the searched integral in those. 
+In order to derive an expression for the $d$-dimensional spatial angle $\Omega_d$ examine the $d$-dimensional Gauß-integral. Show that
+\begin{align}
+\int_{-\infty}^\infty \dots \int_{-\infty}^\infty e^{-\vec{x}^2} d^dx = \left(\int_{-\infty}^\infty e^{-x^2}dx\right)^d = \pi^{d/2}
+\end{align} and use its represenation in spherical coordinates to derive the spherical angle $\Omega_d$.
+
+\item[b)] Given is a $d$-dimensional sphere with radius $R$. At which dimension $d$ is the volume of an outer shell of the sphere with a thickness of $R\cdot 10^{-6}$ a million times bigger than the volume of the inner squere?
+\end{itemize} 

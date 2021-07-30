@@ -1,0 +1,155 @@
+\documentclass[12pt,a4paper]{article} %scrbook}%bookof}
+
+
+
+% makes nice font
+
+
+%fills A4 page
+\usepackage{a4wide}
+\usepackage[inner=2cm,outer=2cm, bottom = 2.0cm]{geometry}   %nice setting for twoside binding
+
+
+
+%\usepackage[utf8]{inputenc}   % damit man Umlaute direkt eingeben kann und diese erkannt werden.
+\usepackage[T1]{fontenc}        % Umlaute werden als eine Einheit angesehen -> richtige Trennung;
+% ausserdem: die T1-Fonts gibt es auch in
+% größeren Größen
+%\usepackage{ae,aecompl}
+\usepackage{units}
+\usepackage[english]{babel}      %hiermit erhält man z.B. 'Abb.' statt 'Fig.' bei Bildbeschriftungen
+\usepackage[utf8]{inputenc}
+%\makeglossary                   % zwischendurch makeindex disseration aufrufen
+\usepackage{enumerate}
+\usepackage{latexsym}
+
+
+%\clearscrplain
+%\clearscrheadings
+
+\usepackage[headsepline]{scrlayer-scrpage}
+%\usepackage[]{scrpage2}
+%\clearplainofpairofpagestyles
+%\clearscrheadings
+\pagestyle{scrheadings}
+
+\cofoot[\pagemark]{\pagemark}% optionales Argument --> plain
+%\clearscrheadings
+\rohead{NAWI Graz}
+\chead{
+	Exercise Statistical Physics \\{\small Contact: gerhard.dorn@tugraz.at}}
+\lohead{ITP}
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+
+
+\usepackage{amsmath,amsthm,amsfonts}
+%\usepackage{showkeys}
+%\usepackage{epsfig}
+%\usepackage{epic}
+\usepackage{xr}
+
+\usepackage{graphicx}
+%\usepackage{inmthesis}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage[sorting=none, hyperref=true, backref=true]{biblatex}
+\addbibresource{./library.bib}
+%boxes
+\usepackage{mdframed}
+\usepackage{tensor}
+%unity operator
+%\usepackage{bbold}
+
+ \setcounter{section}{6}
+\begin{document}
+
+ %\begin{center}
+ %Technische Universität Graz \\
+ %Institut für Theoretische Physik - computational physics \\
+ %Prof. Dr. Wolfgang von der Linden \\
+ %Kontakt: gerhard.dorn@tugraz.at
+ %\end{center}
+ 
+ 
+ \vspace{1cm}
+ 
+ 
+ 
+
+ \section{Increase of entropy when mixing two gases}
+ %von 5 Freiheitsgraden durch Mischen 6. Freiheitsgrad anregen.
+ Given are two isolated containers $A$ and $B$ with a volume of 3 resp. 1 $m^3$. \\ 
+ Container $A$ contains argon at a temperature of $T_A = 100$ K and a pressure $p_A = 1$ bar. 
+ \begin{itemize}
+  \item What are the degrees of freedom of the gases and the mass unit\footnote{ 1 mol $\cdot$ 1 unit = 1 g, Avogadro constant $N_A= 6.022 \cdot 10^{23}$} in container $A$? % 3 degrees of freedom, 40 units
+ \end{itemize}
+Container $B$ contains fluor molecules (F$_2$) at a temperature of $T_B = 1200$ K and a pressure $p_B = 0.1$ bar. Above 1000 K they have 6 degrees of freedom, below 800 K the have 5 degrees of freedom and a mass of 38 units per atom.
+ \begin{itemize}
+  \item[a)] Which container contains more particles (atoms resp. molecules)? How many?
+  \item[b)] Which container contains more mass? How much?
+  \item[c)] Which container contains more energy (consider the degrees of freedom)?
+  Calculate the energy for each container.
+  \item[d)] Calculate the entropy of each container.
+ \end{itemize}
+The containers are connected now (a wall between them is removed).
+ \begin{itemize}
+  \item[e)] Calculate the new temperature $T$ and the new pressure $p$.
+  \item[f)] Calculate the mixing entropy $S$.
+ \end{itemize}
+ 
+ 
+ 
+ \section{Joule–Thomson process}
+ If the gas penetrates through the porous partition between two vessels ($P_1 > P_2$), in other respects insulated from each other and from the surroundings, then the value of the enthalpy $H_1 = U_1 +p_1 V_1$ before the process is started is equal to the value of the enthalpy $H_2$ after the process is finished. The process is assumed to occur adiabatically, i.e. $\delta Q  =0$ during the entire process. The resulting change in the temperature is determined by Joule–Thomson coefficient $\mu_{JT} = \left( \frac{\partial T}{\partial P} \right)_H$.
+  \begin{itemize}
+   \item[a)] Show that \quad $dH = TdS + VdP$ \quad and thus \quad $\mu_{JT} = \frac{C}{C_P}(T \alpha - 1).$ \\
+   You can use Maxwell relation $\left( \frac{\partial S}{\partial P} \right)_T  = - \left( \frac{\partial V}{\partial T} \right)_P = - V \alpha$, where $\alpha = \frac{1}{V} \left( \frac{\partial V}{\partial T} \right)_P$ is a coefficient of thermal expansion.
+   \item[b)] Show that $\mu_{JT} = 0$ for an ideal gas.
+   \item[c)] For a real gas, either warming $\mu_{JT} < 0$ or cooling $\mu_{JT} > 0$ can occur. The limit between these two effects is defined by the \textit{inversion curve}, when $\alpha = \frac{1}{T}$. \\
+   Calculate and plot in the P-T diagram the inversion curve for the gas with the \textit{van der Waals} equation of state: 
+   $$ P = \frac{kT}{v-b} - \frac{a}{v^2} , \quad v = \frac{V}{N}.$$
+
+
+
+\end{itemize}
+
+
+\section{Ergodic hypothesis}
+
+An ergodic\footnote{The phrase ``ergodic'', greek combination of ``ergon'' (work) and ``odos'' (path), was introduced by Ludwig Boltzmann who was a professor in Graz from 1869–1873 and 1876–1890.} system is a system for which the time average of a quantity is equal to the average over the configuration space $\Omega$. Argue if the following systems with the given configuration space are ergodic or not. Discuss this property considering elastic and inelastic collision between particles and also in the case of no collision. 
+
+\begin{itemize}
+	\item[a)] Ideal gas of N particles in a cubic box of volume 1, $\Omega= [0,1]^{3N}\times R^{3N}$.
+	\item[b)] Ideal gas of N particles in a container of volume 1, $\Omega=$ energy shell.
+	\item[c)] Gas of N gravitating particles in a cubic box, $\Omega=$ energy shell.
+\end{itemize}
+
+Also determine the conserved quantity in the above systems, how this conservation constraint the configuration space, and find a practical description of the configuration space in each case.
+For the case of b sketch one element of the configuration space, and how does this depend on the initial condition.
+
+
+
+
+% \printbibliography
+
+
+
+\vspace{2cm}
+\begin{minipage}[t]{1\textwidth}
+	\raggedleft
+	\centering
+	\includegraphics[width = 0.20\textwidth]{CC-BY_icon}
+	\vspace{0.2cm}
+	
+	\centering
+	{\Large Gerhard Dorn} \\
+	https://creativecommons.org/licenses/by/4.0/legalcode
+\end{minipage}
+
+
+
+  \end{document}
+  
+  

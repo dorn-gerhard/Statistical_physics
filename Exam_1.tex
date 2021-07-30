@@ -1,0 +1,205 @@
+\documentclass[12pt,a4paper]{article} %scrbook}%bookof}
+
+
+
+% makes nice font
+
+
+%fills A4 page
+\usepackage{a4wide}
+\usepackage[inner=2cm,outer=2cm, bottom = 2.0cm]{geometry}   %nice setting for twoside binding
+
+
+
+%\usepackage[utf8]{inputenc}   % damit man Umlaute direkt eingeben kann und diese erkannt werden.
+\usepackage[T1]{fontenc}        % Umlaute werden als eine Einheit angesehen -> richtige Trennung;
+% ausserdem: die T1-Fonts gibt es auch in
+% größeren Größen
+%\usepackage{ae,aecompl}
+\usepackage{units}
+\usepackage[english]{babel}      %hiermit erhält man z.B. 'Abb.' statt 'Fig.' bei Bildbeschriftungen
+\usepackage[utf8]{inputenc}
+%\makeglossary                   % zwischendurch makeindex disseration aufrufen
+\usepackage[shortlabels]{enumitem}
+\usepackage{latexsym}
+
+
+%\clearscrplain
+%\clearscrheadings
+
+\usepackage[headsepline]{scrlayer-scrpage}
+%\usepackage[]{scrpage2}
+%\clearplainofpairofpagestyles
+%\clearscrheadings
+\pagestyle{scrheadings}
+
+\cofoot[\pagemark]{\pagemark}% optionales Argument --> plain
+%\clearscrheadings
+\rohead{NAWI Graz}
+\chead{
+	Exercise Statistical Physics \\{\small Contact: gerhard.dorn@tugraz.at}}
+\lohead{ITP}
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+
+
+\usepackage{amsmath,amsthm,amsfonts}
+%\usepackage{showkeys}
+%\usepackage{epsfig}
+%\usepackage{epic}
+\usepackage{xr}
+
+\usepackage{graphicx}
+%\usepackage{inmthesis}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+\usepackage[sorting=none, hyperref=true, backref=true]{biblatex}
+\addbibresource{./library.bib}
+%boxes
+\usepackage{mdframed}
+\usepackage{tensor}
+%unity operator
+%\usepackage{bbold}
+
+\begin{document}
+
+ %\begin{center}
+ %Technische Universität Graz \\
+ %Institut für Theoretische Physik - computational physics \\
+ %Prof. Dr. Wolfgang von der Linden \\
+ %Kontakt: gerhard.dorn@tugraz.at
+ %\end{center}
+ 
+ 
+ \vspace{1cm}\begin{center}
+{\Large \bf Exam 1, Editing time: 90 minutes}
+\end{center}
+
+\section{Dogflea experiment by Ehrenfest [4P]}
+There are two dogs Arko and Bello with a total number $N = 50$ of fleas, which randomly hop from one dog to the other. In the beginning Bello is free from fleas whereas all fleas are on Arko.
+\begin{enumerate}[a)] 
+\item Sketch the probability distribution (diagram) of the number of fleas for dog Bello
+\begin{itemize}
+ \item [i)] at the very beginning,
+ \item [ii)] in an intermediate phase,
+ \item[iii)] and after very long time.
+\end{itemize}
+Mind a proper labelling (coordinate axes, peak heights and scaling)!!!
+
+\item State the partition sum.
+\item At which moment the entropy is maximal? \\
+(at the beginning | in the intermediate thermalization phase | in the end)
+\item At which moment the probability to find most fleas on ... is maximal
+\begin{itemize}
+ \item [i)] Bello (initially flea-frea)
+ \item [ii)] Arko (initially full of fleas)?
+\end{itemize}
+(at the beginning | in the intermediate thermalization phase | in the end)
+
+\item What is the probability to find 20 fleas on one of the two dogs after very long time?\\
+\item Sketch the entropy over time.
+\end{enumerate}
+\section{Ideal gas in a box [4P]}
+Given is an ideal gas with $N$ particles of mass $m$ in a box with volume $V$ at the temperature $T$ in a thermal equilibrium.
+
+
+Which of the following parameters have to be increased (+), decreased (-) or have not to be changed at all~(0) to effect the following changes:
+\begin{enumerate}[a)]
+ \item The number of total collisions of particles with the wall of the box per time and area unit shall \textbf{increase}.
+ \item The average energy per particle shall {\bf decrease}.
+ \item The average distance between particles shall {\bf increase}.
+ \item The average particle velocity in the box shall {\bf increase}.
+\end{enumerate}
+
+
+\begin{table}[h]
+\begin{center}
+ \begin{tabular}{|l| c|c|c|c|}
+ \hline 
+  Zustandsänderung: & $\quad V \quad$ & $\quad T \quad $ & $\quad m \quad$ & $\quad N \quad$ \\
+  \hline \hline
+  a) + collisions paricle with wall & &&& \\ \hline
+  b) -- of $\langle E \rangle$ per particle & &&& \\ \hline
+  c) + $\langle$distance$\rangle$ between particles & &&& \\ \hline
+  d) + $\langle$velocity$\rangle$ & &&& \\ \hline
+ \end{tabular}
+\end{center}
+\end{table}
+ 
+\section{True or false [3P]}
+
+
+Which of the following statements are correct. \textbf{Correct the false statements!}
+% Geben Sie an, welche der folgenden Aussagen über das ideale Gas korrekt sind. Berichtigen Sie jene Aussagen, die nicht stimmen:
+\begin{enumerate}[a)]
+  \item The average energy of a single particle in an ideal gas is proportional to the square root of the particle mass (all particles have the same mass).
+%  Die Durchschnittsenergie von Gasteilchen ist proportional zur Wurzel der Teilchenmasse.
+  \item In an ideal gas, particles do not interact (attraction, repulsion).
+%   Die Teilchen üben keine Kraft aufeinander aus.
+  \item At a given temperature, all particles of the ideal gas have the same kinetic energy.
+%  Alle Gasteilchen haben bei einer gegebenen Temperatur die gleiche kinetische Energie.
+%  \item[h)] Volume of the particles, compared  to the whole volume occupied by tha gas is negligible. 
+%  Das Volumen der Gasteilchen ist im Vergleich zum Gesamtvolumen, in dem sich das Gas befindet, vernachlässigbar.
+  \item In an ideal gas, the average particle velocity is smaller than the most probable velocity and larger than the square root of the average of the squared velocity.
+% Die mittlere Teilchengeschwindigkeit ist kleiner als die häufigste Teilchengeschwindigkeit $v_\textrm{max}$, und größer als die Wurzel des quadratischen Geschwindigkeitsmittels: \\
+  $ \sqrt{\langle v^2\rangle} < \langle v \rangle < v_\textrm{max} $
+  \item Effusion is a reversible process.
+  \item Ergodicity of a system is a time independent feature of the system.
+  \item An ideal gas in a box of volume $V$ with inelastic collisions is an ergodic system for the configuration space consisting of the surface of the energy sphere and the spatial coordinates of the box.
+  %  \item Given is the grandcanonical partition sum. How do you calculate the expectation value $\langle A \rangle$ of the quantity $A$?
+%  
+
+
+\end{enumerate}
+
+
+
+\section{Zipperlike chemical compound [4P]}
+Given is a zipper like chemical compound consisting of $N \gg 1$ bonds (see Fig.~\ref{fig:zipper}) which is in contact with a large thermal bath of temperature $T$.
+\begin{figure}[h]
+\begin{center}
+ %\includegraphics[width = 0.5\textwidth]{} %TO BE DRAWN
+ \caption{Sketch of the zipper--like chemical compound consisting of $N = 18$ bonds, of which seven bonds are open (broken).} \label{fig:zipper}
+ \end{center}
+\end{figure}
+The right hand side of the chemical compound is fixed to a wall. Each of the $N$ bonds can have two states: open (broken) and closed. All bonds on the left hand side of an open bond are also open (zipper like system). Thus, a configuration with closed bonds on the left side of open bonds are not allowed.
+The opening (breaking) of a bond costs the energy $\Delta > 0$.
+
+\begin{enumerate}[a)]
+ \item Calculate the partition sum. Assume the following: $N\rightarrow \infty$.
+ \item Calculate the internal energy $U$. 
+ \item Calculate the average number of open bondings.
+ \item Calculate the heat capacity. (You can combine the exponential terms to a hyperbolic function).
+ \item Which behaviour does the heat capacity show for high temperatures ($T \gg 1$)?\\
+Which theorem makes statements about the heat capacity at high temperatures? Show whether the behaviour is in agreement with the theorem or not.
+ \item Which behaviour does the heat capacity show for low temperatures ($T \rightarrow 0$)?\\
+Which theorem makes statements about the heat capacity at high temperatures? Show whether the behaviour is in agreement with the theorem or not.
+ \item[g)] Calculate the entropy of the system.
+\end{enumerate}
+
+
+% \printbibliography
+
+
+
+\vspace{2cm}
+\begin{minipage}[t]{1\textwidth}
+	\raggedleft
+	\centering
+	\includegraphics[width = 0.20\textwidth]{CC-BY_icon}
+	\vspace{0.2cm}
+	
+	\centering
+	{\Large Gerhard Dorn} \\
+	https://creativecommons.org/licenses/by/4.0/legalcode
+\end{minipage}
+
+
+
+
+\end{document}
+

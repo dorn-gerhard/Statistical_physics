@@ -1,0 +1,205 @@
+\documentclass[12pt,a4paper]{article} %scrbook}%bookof}
+
+
+
+% makes nice font
+
+
+%fills A4 page
+\usepackage{a4wide}
+\usepackage[inner=2cm,outer=2cm, bottom = 2.0cm]{geometry}   %nice setting for twoside binding
+
+
+
+%\usepackage[utf8]{inputenc}   % damit man Umlaute direkt eingeben kann und diese erkannt werden.
+\usepackage[T1]{fontenc}        % Umlaute werden als eine Einheit angesehen -> richtige Trennung;
+% ausserdem: die T1-Fonts gibt es auch in
+% größeren Größen
+%\usepackage{ae,aecompl}
+\usepackage{units}
+\usepackage[english]{babel}      %hiermit erhält man z.B. 'Abb.' statt 'Fig.' bei Bildbeschriftungen
+\usepackage[utf8]{inputenc}
+%\makeglossary                   % zwischendurch makeindex disseration aufrufen
+
+\usepackage{latexsym}
+\usepackage[shortlabels]{enumitem}
+
+%\clearscrplain
+%\clearscrheadings
+
+\usepackage[headsepline]{scrlayer-scrpage}
+%\usepackage[]{scrpage2}
+%\clearplainofpairofpagestyles
+%\clearscrheadings
+\pagestyle{scrheadings}
+
+\cofoot[\pagemark]{\pagemark}% optionales Argument --> plain
+%\clearscrheadings
+\rohead{NAWI Graz}
+\chead{
+	Exercise Statistical Physics \\{\small Contact: gerhard.dorn@tugraz.at}}
+\lohead{ITP}
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+
+
+\usepackage{amsmath,amsthm,amsfonts}
+%\usepackage{showkeys}
+%\usepackage{epsfig}
+%\usepackage{epic}
+\usepackage{xr}
+
+\usepackage{graphicx}
+%\usepackage{inmthesis}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+\usepackage[sorting=none, hyperref=true, backref=true]{biblatex}
+\addbibresource{./library.bib}
+%boxes
+\usepackage{mdframed}
+\usepackage{tensor}
+%unity operator
+%\usepackage{bbold}
+
+\begin{document}
+
+ %\begin{center}
+ %Technische Universität Graz \\
+ %Institut für Theoretische Physik - computational physics \\
+ %Prof. Dr. Wolfgang von der Linden \\
+ %Kontakt: gerhard.dorn@tugraz.at
+ %\end{center}
+ 
+ 
+ \vspace{1cm}\begin{center}
+{\Large \bf Exam 2, Editing time: 90 minutes}
+\end{center}
+
+\section{Ideal Bose gas near Bose--Einstein condensation [4P]}
+Given is an ideal Bose gas with $N$ particles of mass $m$ in a box with volume $V$ at the temperature $T$ in a thermal equilibrium in $d$ dimensions.
+
+
+Which of the following parameters have to be increased (+), decreased (--) or have not to be changed at all~(0) to effect the following changes:
+\begin{enumerate}[a)]
+ \item Which change of the given parameters could lead to a Bose--Einstein condensation (\textbf{increase} the probability of having a BEC)
+ \item The chemical potential shall {\bf increase} (not being in BEC phase)
+ \item The specific heat shall {\bf increase} in the BEC phase.
+ \item The specific heat shall {\bf increase} not being in the BEC phase.
+\end{enumerate}
+
+
+\begin{table}[h]
+\begin{center}
+ \begin{tabular}{|l| c|c|c|c|c|}
+ \hline 
+  Change of state: & $\quad V \quad$ & $\quad T \quad $ & $\quad \lambda \quad$ & $\quad \textnormal{Dim } d \quad$ & $\quad N \quad$ \\
+  \hline \hline
+  a) + get a BEC & &&&& \\ \hline
+  c) + of $\mu$ (not in BEC phase)& &&&& \\ \hline
+  b) + of $c_V$ (in BEC phase)  & &&&& \\ \hline
+  c) + of $c_V$ (not in BEC phase)  & &&& & \\ \hline
+ \end{tabular}
+\end{center}
+\end{table}
+ 
+\section{True or false [3P]}
+
+
+Which of the following statements are correct. \textbf{Correct the false statements!}
+% Geben Sie an, welche der folgenden Aussagen über das ideale Gas korrekt sind. Berichtigen Sie jene Aussagen, die nicht stimmen:
+\begin{enumerate}[a)]
+  \item In the Debye model we assume all oscillators to have the same frequency.
+%  Die Durchschnittsenergie von Gasteilchen ist proportional zur Wurzel der Teilchenmasse.
+  \item The critical temperature for ideal non--interacting Bose gases increases with mass (is a BEC for Argon more likely than for Helium?).
+%   Die Teilchen üben keine Kraft aufeinander aus.
+  \item Below the critical temperature the chemical potential is constant.
+%  Alle Gasteilchen haben bei einer gegebenen Temperatur die gleiche kinetische Energie.
+%  \item[h)] Volume of the particles, compared  to the whole volume occupied by tha gas is negligible. 
+%  Das Volumen der Gasteilchen ist im Vergleich zum Gesamtvolumen, in dem sich das Gas befindet, vernachlässigbar.
+  \item In the Debye model (3D) the density of frequencies $D(\omega)$ is proportional to $D(\omega) \approx \omega^2$.
+  \item The Einstein model reproduces the low--temperature behaviour of the specific heat correctly whereas the high temperature behaviour is wrong.
+  \item There is no Bose--Einstein condensation for a non-interacting Bose gas in 1D or 2D.
+\end{enumerate}
+
+
+\section{Answer the questions [4P]}
+
+\begin{enumerate}[1.]
+    \item Consider a system of 3 non-interacting particles. Denoting partition functions of each particle by $Z_1, Z_2$  and $Z_3$, express the total partition function of the system for
+    \begin{enumerate}[a)]
+        \item distinguishable particles,
+        \item indistinguishable particles.
+    \end{enumerate}
+    \item In which situations does quantum statistics become important?
+    \item Write down the Fermi-Dirac distribution function and sketch (\textbf{draw!}) the average occupation number $n_\varepsilon$ as a function of the single particle energy $\frac{\varepsilon}{\mu}$ for:
+     \begin{enumerate}[a)]
+        \item temperature T = 0.
+        \item small temperature T.
+        \item very large temperature T. Which classical theorem is reproduced?
+    \end{enumerate}
+    \item What happens to an ideal quantum gas in the limit temperature T $\rightarrow$ 0:
+     \begin{enumerate}[a)]
+        \item if the particles are fermions?
+        \item if the particles are bosons?
+    \end{enumerate}
+\end{enumerate}
+
+
+\section{Gas-Solid phases [4P]}
+
+Consider molecules with the same mass $m$ coexist in gas-solid phases, at the temperature $T$. \\
+\textbf{Gas phase:} First consider the \textbf{indistinguishable ideal non--interacting} gas molecules. Assume to have $N_g$ gas molecules in the volume $V_g$.
+\begin{enumerate}[a)]
+    \item Calculate the grand partition function $\Xi_g$ for the gas molecules, where the thermal wavelength is $\lambda = h \beta^{1/2}/\sqrt{2\pi m}$, and the chemical potential is $\mu_g$.\\ Hint: Start to calculate the canonical partition function for one particle ($H_g = \frac{p^2}{2m}$), think about what the canonical partition function for $N$ indistinguishable particles is and construct the grandcanonical partition function. Remember the series expansion $\sum_n \frac{x^n}{n!} = \exp(x)$.
+    \end{enumerate}
+    You should end up with $\Xi_g = \exp\left( \frac{V_g}{\lambda^3} \exp(\beta \mu_g)\right)$.
+    \begin{enumerate}
+    \item [b)]Calculate and show that the average number of the gas molecules $\langle N_g \rangle$ is equal to 
+    $$\langle N_g \rangle = \frac{V_g}{\lambda^3}\exp{\beta\mu_g}$$
+    Calculate the average energy $U_g$. For $U_g$, express it in terms of $\langle N_g \rangle$ and $k_B T$.
+    \end{enumerate}
+  Now consider the molecules that are in the solid phase and \textbf{distinguishable} with $N_s$ the number of molecules and  $V_s$ the volume. They shall be described as three-dimensional harmonic oscillators with the frequency $\omega$. (i.e. the Einstein solid model with the potential $m\omega^2 q^2/2$ and the canonical partition sum for one particle $Z_c(1) = \frac{1}{2\sinh(\beta \hbar \omega /2)} \approx \frac{1}{\beta \hbar \omega}$)
+    \begin{enumerate}[c)]
+    \item Calculate the grand partition function $\Xi_s$ for the solid molecules where the chemical potential is $\mu_s$. 
+    \item[d)] Calculate and show that the average number of the solid molecules $\langle N_s \rangle$ is equal to 
+    $$\langle N_s \rangle = \frac{\exp(\beta\mu_s)(\frac{2\pi}{\beta h \omega})^3}{1 - \exp(\beta\mu_s)(\frac{2\pi}{\beta h \omega})^3}$$
+    Calculate the average energy $U_s$. For $U_s$, express it in terms of $\langle N_s \rangle$ and $k_B T$.
+    \end{enumerate}
+    Consider the molecules coexist in a gas-solid phase.
+    
+    \begin{enumerate}
+    \item[e)] Calculate and express the density $\rho_g = \langle N_g \rangle / V_g$ of the gas molecules in terms of $\langle N_s \rangle, \beta, h, \omega \text{\, and \,} \lambda$ (chemical potential balance $\exp{\beta\mu_g} = \exp{\beta\mu_s}$).
+\end{enumerate}
+
+
+
+
+
+% \printbibliography
+
+
+
+\vspace{2cm}
+\begin{minipage}[t]{1\textwidth}
+	\raggedleft
+	\centering
+	\includegraphics[width = 0.20\textwidth]{CC-BY_icon}
+	\vspace{0.2cm}
+	
+	\centering
+	{\Large Gerhard Dorn} \\
+	https://creativecommons.org/licenses/by/4.0/legalcode
+\end{minipage}
+
+
+
+
+
+
+
+\end{document}
+

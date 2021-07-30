@@ -1,0 +1,215 @@
+\documentclass[12pt,a4paper]{article} %scrbook}%bookof}
+
+
+
+% makes nice font
+
+
+%fills A4 page
+\usepackage{a4wide}
+\usepackage[inner=2cm,outer=2cm, bottom = 2.0cm]{geometry}   %nice setting for twoside binding
+
+
+
+%\usepackage[utf8]{inputenc}   % damit man Umlaute direkt eingeben kann und diese erkannt werden.
+\usepackage[T1]{fontenc}        % Umlaute werden als eine Einheit angesehen -> richtige Trennung;
+% ausserdem: die T1-Fonts gibt es auch in
+% größeren Größen
+%\usepackage{ae,aecompl}
+\usepackage{units}
+\usepackage[english]{babel}      %hiermit erhält man z.B. 'Abb.' statt 'Fig.' bei Bildbeschriftungen
+\usepackage[utf8]{inputenc}
+%\makeglossary                   % zwischendurch makeindex disseration aufrufen
+\usepackage{enumerate}
+\usepackage{latexsym}
+
+
+%\clearscrplain
+%\clearscrheadings
+
+\usepackage[headsepline]{scrlayer-scrpage}
+%\usepackage[]{scrpage2}
+%\clearplainofpairofpagestyles
+%\clearscrheadings
+\pagestyle{scrheadings}
+
+\cofoot[\pagemark]{\pagemark}% optionales Argument --> plain
+%\clearscrheadings
+\rohead{NAWI Graz}
+\chead{
+	Exercise Statistical Physics \\{\small Contact: gerhard.dorn@tugraz.at}}
+\lohead{ITP}
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+
+
+\usepackage{amsmath,amsthm,amsfonts}
+%\usepackage{showkeys}
+%\usepackage{epsfig}
+%\usepackage{epic}
+\usepackage{xr}
+
+\usepackage{graphicx}
+%\usepackage{inmthesis}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+\usepackage[sorting=none, hyperref=true, backref=true]{biblatex}
+\addbibresource{./library.bib}
+%boxes
+\usepackage{mdframed}
+\usepackage{tensor}
+%unity operator
+%\usepackage{bbold}
+ \setcounter{section}{16}
+\begin{document}
+
+ %\begin{center}
+ %Technische Universität Graz \\
+ %Institut für Theoretische Physik - computational physics \\
+ %Prof. Dr. Wolfgang von der Linden \\
+ %Kontakt: gerhard.dorn@tugraz.at
+ %\end{center}
+ 
+ 
+ \vspace{1cm}
+ 
+
+  \paragraph{Aim:} In this assignment we want to understand the \textbf{Bose--Einstein condensate} (BEC) of an ideal bose gas (IBG) and learn how this effect can be explained with statistical physics. The aim of this course manifests in the critical discussion of the following five questions:
+  \begin{enumerate}
+ \item What is the mathematical background of the Bose--Einstein condensation to happen?
+ \item Does the condensation (having all particles in the ground state) happen anyway at very low temperatures? So what's special about it?
+ \item How is the critical temperature related to the density (bosons per volume)?
+ \item Why is the Bose-Einstein condensation of the IBG just possible in three or more dimensions?
+ \item Why do Fermions not condensate?
+\end{enumerate}
+  
+ \paragraph{Time:} 3 hours  \\
+ \section{Bose--Einstein condensation part 1: partition sum}
+ 
+Setup: We consider an ideal gas of non relativistic bosonic particles in a box of volume $V$ with spin zero  and mass $m$. The number of particles (bosons) $N$ and the energy $E$ are not fixed.
+The energy of the bosons is given by their momenta (no additional potential present). So the Hamiltonian reads ($i$ is the particle number, $N$ is not necessarily fixed):
+$$ H = \sum_{i=1}^N \frac{\lvert \boldsymbol{p}_i \rvert^2}{2m}. $$
+Bold symbols represent vectors whereas slim symbols represent the modulus (norm) of the vector: $p = \lvert \boldsymbol{p} \rvert$.
+Since the number of particles is not fixed but rather determined by the chemical potential $\mu$, 
+we refer to the previously derived average number of bosons per modulus of momenta $p$.
+\begin{itemize}
+\item[a)] Given the temperature $T$ and the chemical potential $\mu$ recall the formula for the average number of bosons with a momenta $p$: $\langle n_p \rangle =?$.
+\end{itemize}
+Though the total number of particles is not known yet, it can be calculated using
+\begin{align}
+ N= \sum_{\boldsymbol{p}} \langle n_p \rangle \label{equ:totalnumber}
+\end{align}
+Note, that the sum goes over all discrete momenta $\boldsymbol{p}$ (energy levels) where some may have the same modulus of momentum $p$!\\
+It is now our aim to evaluate this sum. 
+
+\begin{itemize} 
+ \item[b)] As first step rewrite the expectation value of the occupation number as geometric sum (Remember the derivation). You should have a sum over an index $n$ which occurs as exponent ($\sum_n x^n$). Check that $|x| < 1$ (you might extract something) and that you use the correct range of $n$ (it may be shifted).
+ \item[c)]Having that, we use the fact that 
+ \begin{align}
+\sum_{\boldsymbol{p}} \dots = \frac{V}{(2\pi\hbar)^3 }\int_{-\infty}^\infty \int_{-\infty}^\infty \int_{-\infty}^\infty dp_x dp_y dp_z \dots \label{equ:sum_to_integral}
+ \end{align} in order so rewrite the sum in Eq.~\ref{equ:totalnumber}. Exchange integral and sum and evaluate the Gauss integral (you may make a variable substitution and check the normalization). Use the thermal wavelength $$\lambda = \frac{2\pi \hbar}{\sqrt{2\pi m k_B T}}.$$
+ \item[d)] Give an explanation for the reason and for the validity of this transformation including the principle of quantization and Heisenbergs uncertainity principle.
+\end{itemize}
+
+
+\section{Bose--Einstein condensation part 2: polylogarithm}
+Using the fugacity $z = e^{\beta \mu}$ you should end up with a series of the form $$ g_l(z) = \sum_{n=1}^\infty \frac{z^n}{n^l} $$
+For the fugacity we know, that $\mu < \varepsilon_0 = 0$.
+\begin{itemize}
+ \item [a)] What is the valid range for $z$ under the just stated condidtion. Why must this condition $\mu < \varepsilon_0$ be fulfilled?
+\end{itemize}
+Since the polylogarithm is quite important for the following considerations we want to study it a bit more.
+\begin{itemize}
+ \item[b)]  Plot the polylogarithm $g_{3/2}(z)$, $g_{5/2}(z)$, $g_{7/2}(z)$ for $z\in(0,1)$.
+ \item[c)] Make a short curve sketching, in particular monotony of $g_{3/2}(z)$ for the valid range of the fugacity.
+ \item[d)] For $z = 1$ the polylogarithm corresponds with the Riemann Zeta function. What are the values of $g_{l/2}(1)$ for $l = 1,2,3,\dots 7$.  Make a table!
+\end{itemize}
+
+\section{Bose--Einstein condensation part 3: Critical temperature}
+The work so far was necessary to end up at the following equation:
+\begin{align}
+ N(T, V, \mu) = \frac{V}{\lambda^3} g_{3/2}(z).
+\end{align}
+
+\begin{itemize}
+ \item[a)] What happens for low temperatures for a fixed density $n = N/V$? Is every temperature $T>0$ possible or is there a critical temperature $T_C$. If yes, state it. How is the critical temperature (if it exists) related to the density. 
+ \item[b)] Is there a critical density $n_C$? In which area $(n< n_C)$ or $(n>n_C)$ do you expect Bose-Einstein condensation?
+ \item[c)] Calculate the critical temperature $T_C$ for $^4$He. Assume a specific volume of $v = V/N = 46 \text{\normalfont\AA}^3$. Compare it to the experimental value.
+\end{itemize}
+
+To spoil the result: below the critical temperature the Bose-Einstein condensation occurs.
+
+\begin{itemize}
+ \item[d)] Argue from the derivation why a Bose-Einstein condensation of an IBG is not possible in 1D or 2D.
+\end{itemize}
+
+\begin{itemize}
+ \item[e)] Why do Fermions not condensate at low temperatures? What might happen with Fermions on very low temperatures to allow for something like a condensation?
+\end{itemize}
+
+In order to get a correct statistsical description for temperatures below the critical temperature we have to reevaluate the approximation done in Eq.~(\ref{equ:sum_to_integral}).  \paragraph{Background:} When transforming from sum to integral an error occurs which is proportional to the discritization steps (distant between two discrete points) and proportional to the derivative of the function in the sum. Since the groundstate occupation number becomes macroscopically large the error estimated via the derivative explains, why an extra treatment of the zero momentum term is necessary. Refer to the Euler-Maclaurin formula for more information regarding the transformation from sum to integral.
+\begin{itemize} 
+ \item[f)] For the reevaluation of Eq.~(\ref{equ:totalnumber}) split the zero momentum term which corresponds to the number of particles in the groundstate $N_0 = \langle n_0\rangle$ from the sum. For the rest of the sum over $\boldsymbol{p}\neq 0$ perform the integral approximation as done previously in Eq.~(\ref{equ:sum_to_integral}) neglecting the missing zero momentum term, since it has no relevant contribution to the integral. You will end up with the same formula except for the additional summand $N_0$ which is now valid for $T < T_C$:
+\end{itemize}
+\begin{align}
+ N(T, V, \mu) = N_0 + \frac{V}{\lambda^3} g_{3/2}(z).
+\end{align}
+Now we assume the particle density $n = N/V $ to be constant in the thermodynamic limit ($N\rightarrow \infty, V\rightarrow \infty$) and want to examine if the groundstate density becomes macroscopically. 
+
+
+\begin{itemize}
+ \item[g)] Calculate the ratio $N_0/N$ for $T < T_C$ and make a plot. Assume $\varepsilon_0 = 0$ and $\mu = 0$. (Use $T_C$ and $N$ as reference points on the $x$ and $y$ axis.
+\end{itemize}
+
+
+\section{Bose--Einstein condensation part 4: Specific heat, [1 bonus point]}
+Our next aim is to calculate the specific heat of the Bose gas, for $T< T_C$ and $T>T_C$
+Therefore we calculate first the total energy of the system.
+
+\begin{itemize}
+ \item[a)] State a formula to calculate the total energy of the system. (Remember how to count in a proper way.) How to treat the zero momentum term?
+ \item[b)] Proceed as done for the particle number. Identify the additional energy term in the integral with the derivation of exponential term so you can trace back the integral to the one from the last assignment. You may need another polylogarithm function due to the derivative.
+ \item[c)] Calculate the specific heat ($c_V = \frac{1}{N} \frac{d}{dT} E(V,N,\mu)$ for $T \leq T_C$. Use that $\mu = 0$ and $z = 1$ are independent of the temperature.
+ Express your specific heat in terms of $\frac{T}{T_C}$.
+ \item[d)] Calculate the specific heat for $T > T_C$. $\mu$ and $z$ are now not constant but dependent on the temperature $T$. Thus you have to calculate the derivate of the polylogarithm (don't forget the chain rule!).
+ \item[e)] Show that $g'_{l}(z) = \frac{1}{z} g_{l-1}(z)$ using the definition of the polylogarithm.
+ \item[f)] For the remaining unknown ($\frac{\partial z}{\partial T}$) we use the known relation for the specific volume $v = 1/n = V/N$ for $T> T_C$:
+ \begin{align}
+ 1 = \frac{v}{\lambda^3}g_{3/2}(z). \label{teilchenzahlbedingung}
+ \end{align}
+ Derive the equation with respect to $T$, don't forget the product and the chain rule and extract the remaining unknown.
+ \item[g)] State the final specific heat $c_V(T)$ for $T>T_C$ by replacing all thermal wavelength terms using Eq.~(\ref{teilchenzahlbedingung}).
+ \item[h)] Make a plot of the specific heat for both cases $T< T_C$ and $T>T_C$ (in one plot). 
+ \item[i)] Interprete the result with regard to expected limits (high and low temperature limits). Do they correspond to physical laws? If yes, which ones?
+  \end{itemize}
+
+
+% \printbibliography
+
+
+
+\vspace{2cm}
+\begin{minipage}[t]{1\textwidth}
+	\raggedleft
+	\centering
+	\includegraphics[width = 0.20\textwidth]{CC-BY_icon}
+	\vspace{0.2cm}
+	
+	\centering
+	{\Large Gerhard Dorn} \\
+	https://creativecommons.org/licenses/by/4.0/legalcode
+\end{minipage}
+
+
+
+
+
+
+  \end{document}
+  
+
+  

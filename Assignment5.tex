@@ -1,0 +1,256 @@
+\documentclass[12pt,a4paper]{article} %scrbook}%bookof}
+
+
+
+% makes nice font
+
+
+%fills A4 page
+\usepackage{a4wide}
+\usepackage[inner=2cm,outer=2cm, bottom = 2.0cm]{geometry}   %nice setting for twoside binding
+
+
+
+%\usepackage[utf8]{inputenc}   % damit man Umlaute direkt eingeben kann und diese erkannt werden.
+\usepackage[T1]{fontenc}        % Umlaute werden als eine Einheit angesehen -> richtige Trennung;
+% ausserdem: die T1-Fonts gibt es auch in
+% größeren Größen
+%\usepackage{ae,aecompl}
+\usepackage{units}
+\usepackage[english]{babel}      %hiermit erhält man z.B. 'Abb.' statt 'Fig.' bei Bildbeschriftungen
+\usepackage[utf8]{inputenc}
+%\makeglossary                   % zwischendurch makeindex disseration aufrufen
+\usepackage{enumerate}
+\usepackage{latexsym}
+
+
+%\clearscrplain
+%\clearscrheadings
+
+\usepackage[headsepline]{scrlayer-scrpage}
+%\usepackage[]{scrpage2}
+%\clearplainofpairofpagestyles
+%\clearscrheadings
+\pagestyle{scrheadings}
+
+\cofoot[\pagemark]{\pagemark}% optionales Argument --> plain
+%\clearscrheadings
+\rohead{NAWI Graz}
+\chead{
+	Exercise Statistical Physics \\{\small Contact: gerhard.dorn@tugraz.at}}
+\lohead{ITP}
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+
+
+\usepackage{amsmath,amsthm,amsfonts}
+%\usepackage{showkeys}
+%\usepackage{epsfig}
+%\usepackage{epic}
+\usepackage{xr}
+
+\usepackage{graphicx}
+%\usepackage{inmthesis}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+\usepackage[sorting=none, hyperref=true, backref=true]{biblatex}
+\addbibresource{./library.bib}
+%boxes
+\usepackage{mdframed}
+\usepackage{tensor}
+%unity operator
+%\usepackage{bbold}
+ \setcounter{section}{12}
+\begin{document}
+
+ %\begin{center}
+ %Technische Universität Graz \\
+ %Institut für Theoretische Physik - computational physics \\
+ %Prof. Dr. Wolfgang von der Linden \\
+ %Kontakt: gerhard.dorn@tugraz.at
+ %\end{center}
+ 
+ 
+ \vspace{1cm}
+ 
+ \section{A two--level system: prototype of a heat storage}
+ \paragraph{Aim:} This exercise serves you to repeat the basic concepts of statistical physics, namely how to derive thermodynamic properties from a canonical partition sum. Basic conepts such as in/distinguishability, non--interacting particles, specific heat (heat storage) and pressure, will be discussed. Some mathematical knowledge about series is required!
+ \paragraph{Time:} 2-3 hours (if the knowledge of the lecture is there!)\\
+ 
+Given is a system of volume $V$ of $N$ not interacting particles, which can be in two energy states $\epsilon_1 = 0$ and $\epsilon_2 = \epsilon > 0$. Exchange of energy with a heat bath is possible.
+Our aim is to derive thermodynamic properties via the partition sum $Z(T,N,V)$ for distinguishable (\textbf{I}) and indistinguishable (\textbf{II}) particles. We start with distinguishable particles. First we have to ask the question how to count states. 
+\begin{enumerate}
+
+ \item What is the partition sum for one particle ($N = 1$)?
+ \item Calculate for a fixed number of excited states $n$~\footnote{Subset $n$ of $N$ particles, which are in the excited state (state 2)} the Hamilton function (energy). 
+ \item How many configurations with exactly this energy are there for distinguishable and indistinguishable particles?
+ 
+ \item Now calculate the total partition sum for distinguishable (\textbf{I}) without restriction of the number of excited states, only the total particle number $N$ is fixed. \\Hint: binomial formula $(a+b)^N$.
+ \item How does the partition sum of indistinguishable particles look like? Calculate it. \\Hint: Geometric series. 
+ \end{enumerate}
+ The following steps have to be performed for distinguishable (\textbf{I}) and indistinguishable (\textbf{II}) particles.
+ \begin{enumerate}[resume]
+ \item What is the probability to find $n$ particles in the excited energy level?
+ \item What is the average particle number in the excited energy level? Sketch this quantity depending on the temperature $T$.\\Hint (\textbf{I}): Write out the binomial coefficient and rewrite it.\\
+ Hint (\textbf{II}): Use a derivative.
+ 
+ \item What is the average internal energy $U$ in the system?\footnote{Use the fact that we have a non--interacting system.} What can we say about energy fluctuations in this system? (look into the lecture notes) Quantify them.
+ \item Calculate the thermodynamic potential, derive the entropy $S$ and make the connection to the internal energy $U$.
+ 
+ \item Calculate and sketch the specific heat depending on the the temperature $T$. Hint: hyperbolic functions
+ \item When is this system best suited as heat storage? \\ 
+ (You may search a local maximum (if it exists), simplify the terms as far as possible, solve numerically or graphically)\\
+ In which case (\textbf{I} or \textbf{II}) can we have a higher specific heat?
+ 
+  
+ \item Now assume that the higher energy level depends from the volume:
+ $$ \epsilon = \frac{1}{V}.$$
+ \item Calculate the pressure of the system depending on the temperature and the volume.\\
+ Try to establish a connection between pressure and internal energy.
+ 
+\end{enumerate}
+ 
+
+ 
+ \section{Einstein solid}
+ \paragraph{Aim:} Application of statistical tools to derive the specific heat of crystals. You may need differentiation rules for hyperbolic functions
+ \paragraph{Time:} 1 hour (after having solved 13 this should be easy) \\
+ 
+ The Einstein solid is a rather simple model for a solid based on the following assumptions (we consider a total of $N$ atoms in contact with a thermal bath):
+ \begin{itemize}
+  \item Each of the atoms has the same mass $m$
+  \item Each of the atoms in the solid is an independent 3D quantum harmonic oscillator 
+  \item All atoms oscillate with the same frequency\footnote{This constraint is simple but not always correct. The Debye model represents a more accurate description of a solid with variable frequencies.}
+ \end{itemize}
+
+ The Hamiltonian of a 3D harmonic oscillator is (we have a total of $3N$ degrees of freedom):
+ \begin{align}
+  H = \sum_{i = 1}^{3N} \frac{1}{2} m (\dot{q}_i^2 + \omega^2 q_i^2)
+ \end{align}
+\begin{enumerate}
+ \item Remember from your quantum mechanics course: What are the eigenstates $\varepsilon_n$ of such a single quantum mechanical harmonic oscillator? 
+ \item Calculate the partition sum for one oscillator. You should end up with some hyperbolic function. (assume an infinite number of possible eigenstates).
+ \item Calculate the partition sum for $N$ particles. \\
+ Hint: You may use the fact, that the oscillators are independent. $Z(N,T) = Z(1,T)^N$
+ \item Calculate the thermodynamic potential
+ \item Calculate the entropy
+ \item Calculate the internal energy
+ \item Calculate the specific heat
+ \item How does the specific heat behaves in the low and high temperature limit?\\
+ Which behaviour is in agreement with the physical laws (name them, what do they say)?
+ \item[+] (half a bonus point) Proof that a 3D harmonic oscillator is equivalent to 3 1D oscillators by working with quantizations in 3 dimensions $n = n_x + n_y + n_z$. Find out the degeneracy for a fixed  energy characterized by the integer quantum number $n$ and calculate the partition sum. Show that this is equivalent to $Z(1,T)^3$ in one dimensions.
+\end{enumerate}
+
+\section*{Interludium: Non--interacting systems}
+
+ The following points can help you to better understand the concept of non--interacting particles. You are not supposed to prepare those tasks for the exercise.
+ \begin{enumerate}
+ \item Which property of a Hamilton operator must be given to be able to speek from a interaction--free system? State an Hamilton which is interacting and proof that this property is violated.
+ \item Proof that the canonical partition sum of a non--interacting (bosonic or fermionic) system can be expressed via the partition sum of a single particle (degree of freedom). 
+ 
+ To do so start with the sum over all quantum numbers $\{n_1, n_2, \dots, n_N\}$\footnote{The energies are given as functions of those quantum numbers $n_j$: $E_j = f(n_j)$.}, split the Hamilton function according to those quantum numbers and conclude the factorizability.
+ 
+ \item Since the summands in the (grand)canonical ensemble depend only on the energy of the states we look at another important transformation:\\
+ \textbf{Energy representation:}
+ We do not sum over states but over energies and take into account how many states with the same energy occur (degeneracy). This number of states per energy is called \textbf{density of states}. Perform this step formally also for interacting systems.
+ 
+  \item Derive the mean occupation of the $k^{\textnormal{th}}$ fermionic or bosonic\footnote{Recall: Each fermionic energy level can only be occupied once, each bosonic energy level can be occupied arbitrarily.} energy state. Use the eigenenergies $\epsilon_i$ and the occupation numbers $n_i$: $H = \sum_i \epsilon_i n_i$.
+  \end{enumerate}
+
+
+ \section{Debye Modell}
+ \paragraph{Aim:} In this problem we improof the Einstein model by taking different oscillation frequencies into account. 
+ \paragraph{Time:} 0.5 - 1 hour
+ 
+The harmonic oscillator of $N$ independent (not interacting) quantum mechanical particles is given by the following Hamilton operator:
+\begin{align*}
+ H = \sum_{j = 1}^{3 N} \Big[ \frac{p_j^2}{2m} + \frac{m \omega_j^2}{2} r_j^2\Big],
+\end{align*} with the eigenenergies
+$$E_j = \hbar \omega_j (n_j  + \frac{1}{2})  , \qquad n_{j} = 0,1,2,\dots 
+$$
+
+The energies of each degree of freedom $j$ (in total $3N$ degrees of freedom) is now only dependent from the oscillation frequency  $\omega_j$ and the excitation (quantum state) $n_j$ (in contrast to the previously discussed Einstein model where all oscillators had the same frequency).
+
+\begin{enumerate}
+  \item Write down the partition sum for fixed $\omega_j$, and arbitrary quantum numbers $n_j = 1,2,3,\dots$ in der canonical ensemble.
+  Derive a partition sum that depends on $\omega_j$ as product over all $j = 1, \dots, N$ (Perform the summatrion over all $n_j$).\\
+  Hint: Geometric series; try to express the final expression with hyperbolic functions.
+  
+  Derive the free energy $F$ and the internal energy $U$. You should end up with 
+\begin{align}
+U(T,N) = \sum_j \frac{\hbar \omega_j}{2} \coth{\frac{\beta \hbar \omega_j}{2}}. \label{equ:internal_energy} 
+\end{align}
+
+  
+  \end{enumerate}
+  What we need now is a distribution of the angular frequencies $D(\omega)$ (density of states) to replace the sum by an integral.
+  The following bullets indicate how the Debye model can be derived (just for information):
+ 
+  \begin{itemize}
+   \item The number of oscillations with a given an angular frequency $\omega$ scales in 3D like $\omega^2$. Therefore the assumed density of angular frequency has the form $$D(\omega) = C \omega^2.$$
+   
+   \item We assume that there is a maximal frequency, the Debye frequency $\omega_D$ up to which the density is nonzero.
+   $$ D(\omega) =  \begin{cases} C \omega^2 & \omega \leq \omega_D \\
+                    0 & \omega > \omega_D
+                   \end{cases}$$
+    \item Normalization: The integral of the density of angular momentum should be equal to the the number of degrees of freedom since it will be used in a sum over those $\sum_{j=1}^{3N}$.
+
+    \begin{align*}
+    \int_0^{\omega_D} D(\omega) d\omega = \frac{C\omega_D^3}{3} \overset{!}{=}  3N \\
+    C = \frac{9N}{\omega_D^3}
+    \end{align*}
+    \item Using the linear isotropic disperions relation $\boldsymbol{k} = c_S \boldsymbol{\omega}$ with the speed of sound in the crystal $c_S$ we can relate the angular frequency $\omega$ to the oscillations possible in the crystal. 
+   \item In order to count the number of oscillations in the crystal, we characterize an oscillation (the mode) by its wave vector $\boldsymbol{k}$ and assume that those are distributed equally in the reciprocal space\footnote{Each grid point corresponds to one oscillation.}. 
+   \item Given the dimensions of the crystal by $V = L \cdot L \cdot L$ we can estimate the minimal possible wave length $\lambda$ and wave vector $k = \frac{2\pi}{\lambda}$ by $k_{\textnormal{min}} = \frac{2\pi }{L}\approx 0$. This corresponds to the minimal reciprocal volume $\Delta \boldsymbol{k} = \frac{(2\pi)^3}{V}$ an oscillation takes in reciprocal space. The maximal wave vector is given by the minimal wavelength $|\boldsymbol{k}|_\textnormal{max} = \frac{^3\sqrt{N}\pi }{L }$ 
+   \item The total number of modes can be calculated in reciprocal space by an integral 
+   $$\sum_{k_x} \sum_{k_y} \sum_{k_z} 1\approx \left(\int_{\frac{2\pi}{L} \approx 0}^{\sqrt[3]{N} \pi/L} dk\right)^3 = \frac{N \pi^3}{V}.$$
+  
+  
+ \item We approximate this integral of the reciprocal space by the eighth of a spherical integral using $\omega_D$ as maximal radius. This yields for the Debye angular frequency $\omega_D$:
+ \begin{align*}
+ \frac{N\pi^3}{V} = \frac{1}{8} 4 \pi^2 \int_0^{\omega_D} \omega^2 d\omega \\
+ \omega_D = \sqrt[3]{\frac{6N \pi^2}{V}} c_S
+ \end{align*}
+ 
+\end{itemize}   
+
+  
+
+  Your task now is to calculate the heat capacity:
+  \begin{enumerate}[resume]
+  \item  Use the density for the angular frequency $D(\omega)$ to give a representation of the internal energy [Eq.~(\ref{equ:internal_energy})] as an integral. Calculate and sketch the specific heat for high and low temperatures. Use the Debye temperature $\Theta_D = \hbar \omega_D / k_B$ as reference and check if the behaviour of the specific heat is in correspondance with the physical laws.
+  Compare those results to the results of the Einstein model and discuss for which temperature range which model is better suited.
+  
+  
+  Useful hint for the approximation of the integral:
+  
+  Go back to exponential functions and expand the integrand in a series. Only consider leading polynoms for the approximation and use
+  $$ \int_0^\infty \frac{e^x x^4}{(e^x-1)^2} dx = \frac{4}{15} \pi^4. $$
+   \end{enumerate}
+
+% \printbibliography
+
+
+
+\vspace{2cm}
+\begin{minipage}[t]{1\textwidth}
+	\raggedleft
+	\centering
+	\includegraphics[width = 0.20\textwidth]{CC-BY_icon}
+	\vspace{0.2cm}
+	
+	\centering
+	{\Large Gerhard Dorn} \\
+	https://creativecommons.org/licenses/by/4.0/legalcode
+\end{minipage}
+
+
+
+  \end{document}
+  
+
+  
